@@ -1,0 +1,89 @@
+<head>
+    <link rel="icon" , href="/images/favicon.ico"></link>
+    <link rel='stylesheet' , href="/stylesheets/circle.css">></link>
+    <link rel='stylesheet' , href="/stylesheets/loader.css">></link>
+    <link rel='stylesheet' , href="/stylesheets/tab.css"></link>
+    <link rel='stylesheet' , href="/stylesheets/ui.css"></link>
+</head>
+<html>
+<div class="main" style="width: 100%; height:100%; z-index:99; overflow:hidden;"></div>
+<div style="position: absolute; top:0px; bottom:0px; left:0px; right:0px; background: url('images/Abstract-Html-background-image.jpg'); background-size: cover;  background-repeat: no-repeat;">
+    <div id="header">
+        <h1 id="caption" style='width:70%'>
+            &nbsp; PDF to Text
+        </h1>
+        <div style="position:absolute; top:-10px; height:64px; width:64px; color:white; right:0px; opacity:1.0">
+            <img src="/icons/8-Bit-Logo.png" style='height:60px; width:60px;' />
+        </div>
+    </div>
+    <div class="background" style="position:absolute; width:400px; top:50px; bottom:0px; color:white; border:1px solid #fff; margin:10px;padding:10px">
+        <div style="width:400px; height:340px; margin-top:30px; vertical-align:baseline;">
+            <div id="droparea">
+                <div id="dropareainner">
+                    <p></p>
+                    <img src="/icons/pdf.svg" style="width:72px; height:72px; margin-top:10px; margin-bottom:20px;" />
+                    <p id="dropfiletext" style="font-size: 14px;">
+                        Drop 'pdf' file here
+                    </p>
+                    <p style="font-size: 14px;">or</p>
+                    <p>
+                        <input id="uploadbtn" type="button" value="Select File"></input>
+                    </p>
+
+                    <input id="upload" type="file"></input>
+                </div>
+
+                <div id="uploadWait" style="display:none;">
+                    <div style="position:absolute; left:27%; top:400px; transform: scale(0.5);">
+                        <div id="uploadProgress" class="c100 p0 big blue">
+                            <span id="percentage">0%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="waitImage" style="position:absolute; left:30%; bottom:60px; height:60px; color:white; display:none; transform: scale(0.5);">
+                <img src='/icons/103.gif'></img>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="transcription" class="background-opaque" style="left:430px; right:0px; top:50px; bottom:0px; position:absolute; border:1px solid #fff; margin:10px; padding:10px;">
+        <div id="rendering" style="width:100%; display:none">
+            <div class="tab" id="tab">
+                <button class="tablinks" id="tab1" onclick="showTab(event, 'structureFrame', 'tab1')" value="Structure">Document</button>
+                <button class="tablinks" id="tab2" onclick="showTab(event, 'textFrame', 'tab2')" value="Text">Text</button>
+            </div>
+            <div class="tabcontent background-opaque" id="structureFrame" style="left:10px; right:10px; top:60px; bottom:52px; overflow:auto; position:absolute;">
+                <div id="structure" style="opacity:100%;">
+                </div>
+            </div>
+            <div class="tabcontent background-opaque" id="textFrame" style="left:10px; right:10px; top:60px; bottom:52px; position:absolute;">
+                <textarea id="text" style="left:5px; width:99%; top:5px; height:98%; position:absolute; opacity:100%;" readonly></textarea>
+            </div>
+        </div>
+
+        <div id="actions">
+            <input id="saveBtn" type="button" value="Save" style="position:absolute; bottom:12px; height:30px; width:90px; left:10px;" />
+            <input id="copyBtn" type="button" value="Copy" style="position:absolute; bottom:12px; height:30px; width:90px; left:120px;" />
+        </div>
+
+    </div>
+</div>
+
+<script src="/modules/jquery/dist/jquery.min.js"></script>
+<script id="pdf-js" src="/modules/pdfjs-dist/build/pdf.js"></script>
+<script id="pdf-js-web" src="/modules/pdfjs-dist/web/pdf_viewer.js"></script>
+<script id="pdf-js-worker" src="/modules/pdfjs-dist/build/pdf.worker.js"></script>
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = document.getElementById("pdf-js-worker").getAttribute("src");
+</script>
+<script src="/javascripts/main.js"></script>
+
+</html>
